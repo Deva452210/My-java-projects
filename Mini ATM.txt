@@ -1,0 +1,68 @@
+package welcome;
+import java.util.Scanner;
+
+public class mini_ATM {
+	public static void main(String[] args) {
+		System.out.println("Welcome to the DUB");
+		System.out.println("Please register");
+		String name;
+		int password;
+		int balance = 0;
+		int withdrawl = 0;
+		int deposite = 0;
+		int pin;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter your name: ");
+		name = input.nextLine();
+		System.out.println("Please set your password ");
+		Scanner input1 = new Scanner(System.in);
+		System.out.println("Enter your password: ");
+		password = input1.nextInt();
+		System.out.println("Congrats, your details have been registered successfully!");
+		while (true) {
+		System.out.println("Please select an option");
+		System.out.println("1.Balance");
+		System.out.println("2.Deposite");
+		System.out.println("3.Withdrawl");		
+		System.out.println("4.Cancel payment");		
+		int opt ;
+		Scanner input2 = new Scanner(System.in);
+		opt = input2.nextInt();
+		switch (opt) {
+		case 1 : 
+			System.out.println("Your account balance is: " + balance);
+			break;
+		case 2:
+			Scanner input3 = new Scanner(System.in);
+			System.out.println("How much amount you want to deposite?");
+			deposite =input3.nextInt();
+			balance += deposite;
+			break;
+		case 3:
+			Scanner input5 = new Scanner(System.in);
+			System.out.println("Enter your pin");
+			pin = input5.nextInt();
+			if(pin == password) {
+				Scanner input4 = new Scanner(System.in);
+				System.out.println("How much amount yu want to withdrawl?");
+				withdrawl = input4.nextInt();
+				if (balance < withdrawl) {
+					System.out.println("Insufficient balance");
+				}
+				else {
+					balance -= withdrawl;
+				}
+				}
+				else {
+					System.out.println("Incorrect pin");
+					break;
+				}
+		case 4 :
+			System.out.println("Thank you," + name + " see you again");	
+			break;
+		default:
+			System.out.println("Please check the input");
+			}
+		}
+	}
+}
